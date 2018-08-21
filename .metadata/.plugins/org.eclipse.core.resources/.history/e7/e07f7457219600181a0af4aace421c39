@@ -1,0 +1,5 @@
+package com.springmvc.bookapp.controllers;
+
+public class HomeController {
+
+}

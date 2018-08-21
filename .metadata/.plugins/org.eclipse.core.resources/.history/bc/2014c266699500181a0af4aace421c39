@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1> ${subjectName} Quiz </h1>
+	<h1>Q ${quesNo} . ${question.questionString}</h1>
+	<form action="selectSubject.html" method="post">
+		
+		
+	    <c:forEach items="${subjects}" var="subject">
+	            <option value="${subject}">${subject}</option>
+	    </c:forEach>
+		
+		<input type = "submit" value = "Select"/>
+	</form>
+	 
+	 
+</body>
+</html>

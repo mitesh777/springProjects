@@ -1,0 +1,29 @@
+package com.springmvc.bookapp.dao.impl;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import org.springframework.stereotype.Repository;
+
+import com.springmvc.bookapp.dao.BookDAO;
+import com.springmvc.bookapp.entities.Book;
+@Repository
+public class JPABookDAO implements BookDAO {
+
+	@Override
+	public long saveBook(Book book) {
+		// TODO Auto-generated method stub
+		String unit = "tps";
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory(unit);
+		EntityManager em = factory.createEntityManager();
+		//Airline airline = new Airline("Airways","type1");
+		em.getTransaction().begin();
+		em.persist(book);
+		em.getTransaction().commit();
+		em.close();
+		System.out.println(book + " added by daoImpl");
+		long id = book.getBookId();
+		return id;
+	}
+}

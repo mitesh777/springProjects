@@ -1,0 +1,41 @@
+package com.springmvc.bookapp.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.springmvc.bookapp.entities.Book;
+
+@Controller
+public class HomeController {
+	@RequestMapping(value = "/")
+	public String home() {
+		return "home";
+	}
+	@RequestMapping(value = "/home.html")
+	public ModelAndView homePage() {
+		String viewName ="home";
+		return new ModelAndView(viewName);
+	}
+	
+	@RequestMapping(value = "/addBook.html")
+	public ModelAndView addBook() {
+		String viewName = "addBook";
+		String modelName = "bookObj";
+		Book book =new Book();
+		
+		return new ModelAndView(viewName, modelName, book);
+	}
+	
+	@RequestMapping(value = "/addBook.html", method = RequestMethod.POST)
+	public ModelAndView addBook(@ModelAttribute("book") Book book, Model model) {
+		String viewName = "addBook";
+		String modelName = "bookObj";
+		Book book =new Book();
+		
+		return new ModelAndView(viewName, modelName, book);
+	}
+	
+}

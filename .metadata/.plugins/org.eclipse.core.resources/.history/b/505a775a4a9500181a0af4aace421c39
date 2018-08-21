@@ -1,0 +1,14 @@
+package com.pratian.onlineexamapp.services;
+
+import com.pratian.onlineexamapp.models.Result;
+
+public interface ExaminationService {
+	
+	boolean checkName(String name);
+	
+	long addResult(Result result);
+	
+	
+	
+	
+}

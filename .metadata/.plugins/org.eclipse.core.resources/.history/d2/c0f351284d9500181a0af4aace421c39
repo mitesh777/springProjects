@@ -1,0 +1,33 @@
+package com.pratian.onlineexamapp.dao;
+
+import java.util.List;
+
+import com.pratian.onlineexamapp.models.Result;
+
+public interface ExaminationDAO {
+
+	
+	public boolean checkNameInDB(String name) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	public long saveResult(Result result) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	public List<String> fetchQuestions(String subjectName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public String[] fetchSubjects() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

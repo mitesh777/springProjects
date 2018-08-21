@@ -1,0 +1,27 @@
+package com.pratian.onlineexamapp.dao;
+
+import java.util.List;
+
+import com.pratian.onlineexamapp.models.Question;
+import com.pratian.onlineexamapp.models.Result;
+
+public interface ExaminationDAO {
+
+	
+	public boolean checkNameInDB(String name);
+
+
+	public long saveResult(Result result);
+
+
+	public List<Question> fetchQuestions(String subjectName) ;
+
+
+	public List<String> fetchSubjects() ;
+	
+	Question fetchQuestion(String subjectName, int id);
+	
+	int fetchResult(List<Integer> answers, String subject);
+	
+	int fetchTotalQuestions(String subject);
+}

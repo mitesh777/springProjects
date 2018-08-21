@@ -1,0 +1,64 @@
+package com.pratian.onlineexamapp.dao.impl;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import com.pratian.onlineexamapp.dao.ExaminationDAO;
+import com.pratian.onlineexamapp.models.Question;
+import com.pratian.onlineexamapp.models.Result;
+
+public class ExaminationDAOImplements implements ExaminationDAO {
+	
+	HashMap<String,List<Question>> questionBank;
+	List<String> subjects;
+	List<Result> results;
+	
+	
+	
+	public ExaminationDAOImplements() {
+		super();
+		this.questionBank = new HashMap<String,List<Question>>();
+		this.subjects = new ArrayList<String>();
+		results = new ArrayList<Result>();
+		
+		subjects.add("Java Core");
+		subjects.add("Servlets");
+		subjects.add("DB");
+		String[] options = {"abc","now","save","me"};
+		Question question1= new Question(1L, "What is java?", options, 3); 
+	}
+
+	public ExaminationDAOImplements(HashMap<String, List<Question>> questionsBank, List<String> subjects,
+			List<Result> results) {
+		super();
+		this.questionsBank = questionsBank;
+		this.subjects = subjects;
+		this.results = results;
+	}
+
+	@Override
+	public boolean checkNameInDB(String name) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public long saveResult(Result result) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<String> fetchQuestions(String subjectName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String[] fetchSubjects() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

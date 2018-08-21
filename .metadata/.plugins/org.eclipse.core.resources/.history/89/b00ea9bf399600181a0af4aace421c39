@@ -1,0 +1,23 @@
+package com.springmvc.bookapp.validators;
+
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
+
+import com.springmvc.bookapp.entities.Book;
+
+public class BookValidator implements  Validator{
+
+	@Override
+	public boolean supports(Class<?> clas) {
+		// TODO Auto-generated method stub
+		return clas.isAssignableFrom(Book.class);
+	}
+
+	@Override
+	public void validate(Object arg0, Errors errors) {
+		// TODO Auto-generated method stub
+		ValidationUtils.rejectIfEmpty(errors, "bookName", "required.bookName", "Please enter Book Name");
+	}
+
+}

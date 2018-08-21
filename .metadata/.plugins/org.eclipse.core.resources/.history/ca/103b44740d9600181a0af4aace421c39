@@ -1,0 +1,10 @@
+package di.messagesource;
+
+import org.springframework.context.MessageSource;
+
+public class Employee {
+	private int empId;
+	private String empName;
+	private double salary;
+	private MessageSource messageSource;
+}

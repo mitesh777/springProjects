@@ -1,0 +1,4 @@
+required.bookName = Book Name cannot be empty hello
+required.bookPriceZero = Book Price cannot be zero
+required.isbn = ISBN cannot be empty
+required.authors = At least one author should be selected

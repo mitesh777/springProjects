@@ -1,0 +1,16 @@
+package com.springmvc.bookapp.entities;
+
+import java.util.List;
+
+import javax.persistence.Entity;
+@Entity
+@Table(name="books")
+public class Book {
+	private long bookId;
+	private String isbn;
+	private double bookPrice;
+	private String bookName;
+	private List<String> authors;
+	
+	
+}

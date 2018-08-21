@@ -1,0 +1,10 @@
+package com.pratian.onlineexamapp.models;
+
+public class Question {
+	int questionId;
+	String questionString;
+	String[] options = new String[4];
+	int correctOption;
+	
+	
+}

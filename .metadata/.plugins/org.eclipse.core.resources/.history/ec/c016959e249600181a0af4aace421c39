@@ -1,0 +1,16 @@
+package com.springmvc.bookapp.dao.impl;
+
+import org.springframework.stereotype.Repository;
+
+import com.springmvc.bookapp.dao.BookDAO;
+import com.springmvc.bookapp.entities.Book;
+@Repository
+public class JPABookDAO implements BookDAO {
+
+	@Override
+	public long saveBook(Book book) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

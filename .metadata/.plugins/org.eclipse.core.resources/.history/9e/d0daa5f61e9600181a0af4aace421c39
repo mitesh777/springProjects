@@ -1,0 +1,73 @@
+package com.springmvc.bookapp.entities;
+
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="books")
+public class Book {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long bookId;
+	private String isbn;
+	private double bookPrice;
+	private String bookName;
+	@ElementCollection
+	@Column(name = ""book_authors")
+	private List<String> authors;
+
+	public Book(String isbn, double bookPrice, String bookName, List<String> authors) {
+		super();
+		this.isbn = isbn;
+		this.bookPrice = bookPrice;
+		this.bookName = bookName;
+		this.authors = authors;
+	}
+	//default are a must for frameworks to use
+	public Book() {
+		super();
+	}
+	public long getBookId() {
+		return bookId;
+	}
+	public void setBookId(long bookId) {
+		this.bookId = bookId;
+	}
+	public String getIsbn() {
+		return isbn;
+	}
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+	public double getBookPrice() {
+		return bookPrice;
+	}
+	public void setBookPrice(double bookPrice) {
+		this.bookPrice = bookPrice;
+	}
+	public String getBookName() {
+		return bookName;
+	}
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+	public List<String> getAuthors() {
+		return authors;
+	}
+	public void setAuthors(List<String> authors) {
+		this.authors = authors;
+	}
+	@Override
+	public String toString() {
+		return "Book [bookId=" + bookId + ", isbn=" + isbn + ", bookPrice=" + bookPrice + ", bookName=" + bookName
+				+ ", authors=" + authors + "]";
+	}
+	
+	
+}

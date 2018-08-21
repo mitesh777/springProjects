@@ -1,0 +1,27 @@
+import java.util.ArrayList;
+import java.util.List;
+
+import com.shoppingkeeda.productportal.entities.Product;
+import com.shoppingkeeda.productportal.services.ProductService;
+
+public class ServicesImpl implements ProductService {
+	List<Product> products = new ArrayList<Product>();
+	@Override
+	public long saveProduct(Product product) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String searchProductByName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Product> listAllProducts() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

@@ -1,0 +1,12 @@
+package com.pratian.onlineexamapp.services;
+
+public interface ExaminationService {
+	
+	boolean checkName(String name);
+	
+	boolean addResult(result);
+	
+	
+	
+	
+}

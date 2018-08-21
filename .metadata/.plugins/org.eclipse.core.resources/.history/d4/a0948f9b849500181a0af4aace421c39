@@ -1,0 +1,128 @@
+package com.pratian.onlineexamapp.controllers;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.mytrip.airlineapp.models.Airline;
+import com.pratian.onlineexamapp.exceptions.NameAlreadyExistsException;
+import com.pratian.onlineexamapp.models.AdminPassword;
+import com.pratian.onlineexamapp.models.Question;
+import com.pratian.onlineexamapp.models.Result;
+import com.pratian.onlineexamapp.services.ExaminationService;
+
+@Controller
+public class ExaminationController {
+	
+	@Autowired
+	ExaminationService service;
+	
+//	@RequestMapping(value = "/selectSubject.jsp")
+//	public String selectSubject(Model model) {
+//		List<String> subjects = service.getSubjects();
+//		model.addAttribute("subjects", subjects);
+//		System.out.println("home get calls name = ");
+//		return "selectSubject";
+//	}
+	
+	@RequestMapping(value = "/admin.html")
+	public String addAirline(Model model) {
+		AdminPassword ap = new AdminPassword();
+		model.addAttribute("airlineObj",ap);
+		return "addAirline";
+	}
+	
+	
+	@RequestMapping(value = "/selectSubject.html", method = RequestMethod.POST)
+	public String selectSubject(@RequestParam("chosenSubject") String subjectName,Model model, HttpServletRequest request) {
+		String view="question";
+		int totalQuestions = service.getTotalQuestions(subjectName);
+		//model.addAttribute("quesNo",0);
+		//List<Question> questions = service.getQuestions(subjectName);
+		request.getSession().setAttribute("subjectName", subjectName);
+		request.getSession().setAttribute("quesNo", 0);
+		request.getSession().setAttribute("totalQues", totalQuestions);
+		request.getSession().setAttribute("answeredList", new ArrayList<Integer>());
+		//System.out.println();
+		Question question = service.getQuestion(subjectName, 0);
+		System.out.println(question);
+		model.addAttribute("question",question);
+		
+		//request.getSession().setAttribute("allQuestions", questions);
+		System.out.println("select subject post "+totalQuestions);
+		//model.addAttribute("subject", subjectName);
+		return view;
+	}
+	
+	@RequestMapping(value = "/question.html", method = RequestMethod.POST)
+	public String question(@RequestParam("chosenOption") int chosenOption,Model model, HttpServletRequest request) {
+		String view="question";
+		
+		int quesNo=(Integer)request.getSession().getAttribute("quesNo");
+		int totalQues=(Integer)request.getSession().getAttribute("totalQues");
+		String subjectName=(String)request.getSession().getAttribute("subjectName");
+		System.out.println(totalQues+" = total	ques "+ quesNo);
+		List<Integer> answeredList = (List<Integer>)request.getSession().getAttribute("answeredList");
+		answeredList.add(chosenOption);
+		if(quesNo+1 < totalQues) {
+			
+			++quesNo;
+			System.out.println(answeredList+" ssup ");
+			Question question = service.getQuestion(subjectName, quesNo);
+			//request.getSession().setAttribute("subjectName", subjectName);
+			request.getSession().setAttribute("quesNo", quesNo);
+			request.getSession().setAttribute("answeredList", answeredList);
+			//System.out.println("question post "+subjectName+" "+chosenOption);
+			model.addAttribute("question",question);
+		}else {
+			System.out.println("hereiwas");
+			String userName = (String)request.getSession().getAttribute("studentName");
+			request.getSession().setAttribute("subjectName", null);
+			request.getSession().setAttribute("quesNo", 0);
+			request.getSession().setAttribute("totalQues", null);
+			request.getSession().setAttribute("answeredList", null);
+			request.getSession().setAttribute("userName", null);
+			model.addAttribute("subjectName", subjectName);
+		//	model.addAttribute("quesNo", );
+			model.addAttribute("userName",userName);
+			model.addAttribute("totalQues", totalQues);
+			
+			System.out.println(userName+" username");
+			view = "result";
+			int result = service.getResult(answeredList, subjectName);
+			model.addAttribute("correctQues", result);
+			Result resultObject = new Result(userName, subjectName, result, answeredList);
+			List<String> optionsSelected =  new ArrayList<String>();
+			List<String> correctOption =  new ArrayList<String>();
+			for(int i=0;i<answeredList.size();i++) {
+				Question ques = service.getQuestion(subjectName, i);
+				optionsSelected.add(ques.getOptions()[answeredList.get(i)]);
+				correctOption.add(ques.getOptions()[ques.getCorrectOption()]);
+			}
+			model.addAttribute("answeredList", optionsSelected);
+			model.addAttribute("correctList", correctOption);
+			try {
+				service.addResult(resultObject);
+			} catch (NameAlreadyExistsException e) {
+				// TODO Auto-generated catch block
+				model.addAttribute("message",userName + " has given the test ");
+				view = "home";
+			}
+			
+			System.out.println(answeredList);
+			//model.addAttribute("result",result);
+			//empty the session variables**********************
+		}
+		return view;
+	}
+}

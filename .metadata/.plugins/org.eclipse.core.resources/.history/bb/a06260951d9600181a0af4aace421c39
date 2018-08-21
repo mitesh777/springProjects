@@ -1,0 +1,5 @@
+package com.springmvc.bookapp.entities;
+
+public class Book {
+
+}

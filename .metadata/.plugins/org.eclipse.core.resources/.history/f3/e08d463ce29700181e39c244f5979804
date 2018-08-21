@@ -1,0 +1,5 @@
+package com.mytrip.airlineapp.services;
+
+public class ProductService {
+
+}

@@ -1,0 +1,5 @@
+package com.springmvc.bookapp.dao;
+
+public class BookDAO {
+
+}

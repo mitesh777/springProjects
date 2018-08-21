@@ -1,0 +1,5 @@
+package com.pratian.onlineexamapp.services;
+
+public class ExaminationService {
+
+}

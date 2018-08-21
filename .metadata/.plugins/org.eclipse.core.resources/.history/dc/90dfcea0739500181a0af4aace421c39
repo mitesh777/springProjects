@@ -1,0 +1,57 @@
+package com.pratian.onlineexamapp.models;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Result {
+	private long resultId;
+	private String userName;
+	private String subject;
+	private int marks;
+	private List<Integer> answers = new ArrayList<Integer>();
+	public Result(long resultId, String userName, String subject, int marks, List<Integer> answers) {
+		super();
+		this.resultId = resultId;
+		this.userName = userName;
+		this.subject = subject;
+		this.marks = marks;
+		this.answers = answers;
+	}
+	@Override
+	public String toString() {
+		return "Result [resultId=" + resultId + ", userName=" + userName + ", subject=" + subject + ", marks=" + marks
+				+ ", answers=" + answers + "]";
+	}
+	public long getResultId() {
+		return resultId;
+	}
+	public void setResultId(long resultId) {
+		this.resultId = resultId;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getSubject() {
+		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+	public int getMarks() {
+		return marks;
+	}
+	public void setMarks(int marks) {
+		this.marks = marks;
+	}
+	public List<Integer> getAnswers() {
+		return answers;
+	}
+	public void setAnswers(List<Integer> answers) {
+		this.answers = answers;
+	}
+	
+	
+}

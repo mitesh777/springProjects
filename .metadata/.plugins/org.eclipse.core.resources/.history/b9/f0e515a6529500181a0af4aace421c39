@@ -1,0 +1,5 @@
+package com.pratian.onlineexamapp.exceptions;
+
+public class NameAlreadyExistsException extends Exception {
+
+}

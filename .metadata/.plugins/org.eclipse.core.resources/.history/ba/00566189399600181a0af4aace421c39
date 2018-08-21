@@ -1,0 +1,5 @@
+package com.springmvc.bookapp.validators;
+
+public class BookValidator {
+
+}

@@ -1,0 +1,17 @@
+package com.pratian.onlineexamapp.services;
+
+import java.util.List;
+
+import com.pratian.onlineexamapp.models.Result;
+
+public interface ExaminationService {
+	
+	boolean checkName(String name);
+	
+	long addResult(Result result);
+	
+	List<String> getQuestions(String subjectName);
+	
+	String[] getSubjects();
+	
+}

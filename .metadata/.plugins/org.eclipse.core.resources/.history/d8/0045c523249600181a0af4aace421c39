@@ -1,0 +1,6 @@
+package com.springmvc.bookapp.dao;
+
+public interface BookDAO {
+	
+	long saveBook(Book book);
+}

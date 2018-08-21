@@ -1,0 +1,13 @@
+package com.pratian.onlineexamapp.models;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Result {
+	long resultId;
+	String userName;
+	String subject;
+	int marks;
+	List<Integer> answers = new ArrayList<Integer>();
+	
+}

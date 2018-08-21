@@ -1,0 +1,42 @@
+package com.mytrip.airlineapp.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.mytrip.airlineapp.models.Airline;
+import com.shoppingkeeda.productportal.services.ProductService;
+
+
+
+@Controller
+public class HomeController {
+	
+	@Autowired
+	ProductService service;
+	
+	@RequestMapping(value = "/")
+	public String home() {
+		return "home";
+	}
+	
+	@RequestMapping(value = "/addProduct.html")
+	public String addAirline(Model model) {
+		Product airline = new Product();
+		model.addAttribute("airlineObj",airline);
+		return "addAirline";
+	}
+	@RequestMapping(value = "/addAirline.html", method = RequestMethod.POST)
+	public String addAirline(Model model,@ModelAttribute("airlineObj") Airline airline) {
+//		String name = model.getAttribute("airlineName");
+//		String serviceType = model.getParameter("serviceType");
+		//System.out.println(name +" type is "+serviceType);
+		//airline = new Airline(name,serviceType);
+		model.addAttribute("airlineObj",airline);
+		return "result";
+	}
+}

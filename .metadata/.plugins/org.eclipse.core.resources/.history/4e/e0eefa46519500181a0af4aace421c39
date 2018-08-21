@@ -1,0 +1,40 @@
+package com.pratian.onlineexamapp.services.impl;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.pratian.onlineexamapp.models.Question;
+import com.pratian.onlineexamapp.models.Result;
+import com.pratian.onlineexamapp.services.ExaminationService;
+
+@Service
+public class ExaminationServicesImpl implements ExaminationService {
+
+	
+	
+	@Override
+	public boolean checkName(String name) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public long addResult(Result result) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Question> getQuestions(String subjectName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String[] getSubjects() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

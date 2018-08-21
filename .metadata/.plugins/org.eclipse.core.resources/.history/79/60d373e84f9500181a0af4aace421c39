@@ -1,0 +1,72 @@
+package com.pratian.onlineexamapp.dao.impl;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.pratian.onlineexamapp.dao.ExaminationDAO;
+import com.pratian.onlineexamapp.models.Question;
+import com.pratian.onlineexamapp.models.Result;
+
+@Repository
+public class ExaminationDAOImplements implements ExaminationDAO {
+	
+	HashMap<String,List<Question>> questionBank;
+	List<String> subjects;
+	List<Result> results;
+	
+	
+	
+	public ExaminationDAOImplements() {
+		super();
+		this.questionBank = new HashMap<String,List<Question>>();
+		this.subjects = new ArrayList<String>();
+		results = new ArrayList<Result>();
+		
+		subjects.add("Java Core");
+		subjects.add("Servlets");
+		String[] options = {"abc","now","save","me"};
+		String[] options2 = {"def","how","to","next"};
+		Question question1= new Question(1L, "What is java?", options, 3);
+		Question question2 = new Question(2L, "Why is java?", options2, 1);
+		List<Question> questions =   new ArrayList<Question>();
+		questions.add(question1);questions.add(question2);
+		questionBank.put("Java Core", questions);
+		
+		Question question3= new Question(3L, "What is Servlet?", options, 0);
+		Question question4 = new Question(4L, "Why is servlet?", options2, 2);
+		Question question5 = new Question(5L, "How is servlet?", options2, 3);
+		List<Question> questions2 =   new ArrayList<Question>();
+		questions2.add(question3);questions2.add(question4);questions2.add(question5);
+		questionBank.put("Servlets", questions2);
+	}
+
+	
+
+	@Override
+	public boolean checkNameInDB(String name) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public long saveResult(Result result) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<String> fetchQuestions(String subjectName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String[] fetchSubjects() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

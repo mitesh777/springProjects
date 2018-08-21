@@ -1,0 +1,15 @@
+package di.messagesource;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class TestMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring_message_source.xml");
+		Employee employee = (Employee)context.p("employee");
+		System.out.println(employee);
+	}
+
+}

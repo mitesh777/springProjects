@@ -1,0 +1,11 @@
+package com.mytrip.airlineapp.services;
+
+import java.util.List;
+
+import com.shoppingkeeda.productportal.entities.Product;
+
+public interface ProductService {
+	public long saveProduct(Product product);
+	public String searchProductByName();
+	public List<Product> listAllProducts();
+}

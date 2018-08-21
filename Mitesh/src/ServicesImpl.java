@@ -1,0 +1,48 @@
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.mytrip.airlineapp.exceptions.ProductAlreadyExistException;
+import com.shoppingkeeda.productportal.entities.Product;
+import com.shoppingkeeda.productportal.services.ProductService;
+@Service
+public class ServicesImpl implements ProductService {
+	List<Product> products = new ArrayList<Product>();
+	
+	public ServicesImpl() {
+		products.add(new Product(1L,"name1", 12.4f, new Date(), "sports"));
+		products.add(new Product(2L,"name2", 12.4f, new Date(), "casual"));
+		products.add(new Product(3L,"name3", 12.4f, new Date(), "swim"));
+	}
+	@Override
+	public long saveProduct(Product product) throws ProductAlreadyExistException {
+		// TODO Auto-generated method stub
+		if(searchProductByName(product.getProductName())!=null) {
+			throw new ProductAlreadyExistException("Airline already exists");
+		}
+		
+		int size = products.size()+1;
+		product.setProductId(size);
+		products.add(product);
+		return size;
+	}
+
+	@Override
+	public Product searchProductByName(String s) {
+		for(Product p: products) {
+			if(p.getProductName().equals(s)) {
+				return p;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public List<Product> listAllProducts() {
+		// TODO Auto-generated method stub
+		return products;
+	}
+	
+}

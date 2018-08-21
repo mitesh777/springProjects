@@ -1,0 +1,14 @@
+package com.springmvc.bookapp.services.impl;
+
+import com.springmvc.bookapp.entities.Book;
+import com.springmvc.bookapp.services.BookService;
+
+public class BookServiceImpl implements BookService {
+
+	@Override
+	public long addBook(Book book) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

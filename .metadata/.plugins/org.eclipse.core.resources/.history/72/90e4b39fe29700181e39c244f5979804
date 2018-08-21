@@ -1,0 +1,5 @@
+package com.mytrip.airlineapp.services;
+
+public interface ProductService {
+	public long saveProduct();
+}
